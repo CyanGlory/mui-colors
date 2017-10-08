@@ -1,0 +1,89 @@
+/* clear */
+body {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* layout */
+.container {
+  position: relative;
+  overflow: hidden;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  transition: width 2s, height 2s;
+}
+.flex-item {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  
+  writing-mode: tb;
+  transition: flex 2s;
+}
+.flex-item.active {
+  flex: 6;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: initial;
+  writing-mode: initial;
+}
+.color-item {
+  display: none;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+
+  padding-left: 1em;
+  transition: flex 2s;
+  word-break: normal;
+}
+  .color-item .depth {
+    width: 100%;
+  }
+.motley-item {
+  display: none;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  transition: flex 2s;
+}
+
+
+/* other */
+.color-name {
+  color: #fff;
+  transform: rotateZ(180deg);
+  padding-top: 1em;
+}
+.flex-item.active .color-name {
+  display: none;
+}
+.flex-item.active .color-item {
+  display: flex;
+}
+.flex-item.active .motley-item {
+  display: flex;
+}
+
+/* 屏幕宽度很小时 */
+@media screen and (max-width: 480px) {
+  .color-item {
+    padding-left: 0;
+  }
+}
+/* 屏幕高度很小时 */
+@media screen and (max-height: 480px) {
+  .depth {
+    display: none;
+  }
+}
