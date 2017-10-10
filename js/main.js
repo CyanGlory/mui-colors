@@ -2,6 +2,8 @@
 window.onload = function() {
   // 点击展开
   $('.flex-container').click(function(ev) {
+    if ($(ev.target).parents('.active')[0]) return;
+
     $('.active').removeClass('active');
     $(ev.target).addClass('active');
   });
@@ -25,4 +27,16 @@ window.onload = function() {
     // 杂色
     $parent.prepend(`<div class="motley-item motley-${colorName}">${colorName}</div>`);
   }
+}
+
+function likeParent(ele, parentEle) {
+  if (ele === parentEle) return true;
+
+  while(ele !== undefined && ele !== null && ele.tagName.toUpperCase() != 'BODY') {
+    if (ele == parentEle) return true;
+    ele = ele.parentNode;
+    console.log('parentEle: ', ele);
+  }
+
+  return false;
 }
